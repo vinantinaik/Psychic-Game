@@ -1,16 +1,11 @@
 
+//global variables
 var winCntr = 0 ;
 var loseCntr = 0 ;
-var totCntr = 5 ;
+var totCntr = 9 ;
 var guessedLetters = [];
 var computerGuess ;
-//var letters = "abcdefghioujklmnopqrstuvwxyz";
 var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
-
-
-
-
 
 
 document.onkeyup = function(event){
@@ -24,7 +19,7 @@ document.onkeyup = function(event){
         }
         else{
             guessedLetters.push(yourGuess);
-            lose();
+            lost();
            
         }
       
@@ -40,20 +35,17 @@ document.onkeyup = function(event){
 
 function getComputerGuess()
 {
-    var rnd ;
-    var str;
+        var rnd ;
+        var str;
 
-    rnd = Math.floor(Math.random()* letters.length);
-
-   
-    str = letters[rnd];
-
+        rnd = Math.floor(Math.random()* letters.length);
+        str = letters[rnd];
     return str;
 }
 
 function resetGame()
 {
-    totCntr= 5;
+    totCntr= 9;
     guessedLetters=[];
       
 }
@@ -65,7 +57,7 @@ function win()
     displayResult();
 }
 
-function lose()
+function lost()
 {
     if(totCntr === 1)
     {
@@ -79,6 +71,7 @@ function lose()
     displayResult();
 }
 
+//display final result
 function displayResult()
 {
     var winP = document.getElementById("wins");
@@ -91,4 +84,14 @@ function displayResult()
     winP.innerHTML = winCntr;
     loseP.innerHTML = loseCntr;
    
+}
+
+//when restart button is clicked
+function restartGame()
+{
+    totCntr = 9;
+    winCntr = 0;
+    loseCntr = 0;
+    guessedLetters=[];
+    displayResult();
 }
